@@ -148,7 +148,7 @@ public class Window extends JFrame {
 
     public class OptionPanel extends JPanel implements ActionListener {
 
-        JButton b_show, b_ok, b_scP, b_scM, 
+        MyButton b_show, b_ok, b_scP, b_scM, 
                 b_up, b_down, b_left, b_right, 
                 b_itrP, b_itrM;
         JTextField t_scale, t_X, t_Y, t_iter;
@@ -172,7 +172,7 @@ public class Window extends JFrame {
         }
 
         private void initComponents() {
-            b_show = new MyButton("ЖОПА");
+            b_show = new MyButton("<<<");
             b_show.addActionListener(this);
 
             l_scale = new JLabel("Scale:");
