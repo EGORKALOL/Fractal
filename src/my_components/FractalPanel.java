@@ -1,6 +1,6 @@
-
 package my_components;
 
+import gradient.FGradient;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.*;
@@ -10,10 +10,14 @@ public class FractalPanel extends JPanel{
     double changeLocation = 100, changeScale = 2;
     int changeItr = 100;
     
-    double X=0.75,Y=-0,scale=200;    
-    int N=200;
+    private double X=0.75,Y=-0,scale=200;    
+    private int N=200;
+    private FGradient fg; 
+    private final FGradient defaultFG = new FGradient();
     
-    public FractalPanel(){}
+    public FractalPanel(){
+        fg = defaultFG;
+    }
     
     public int isIn(double X, double Y) {
         double a=X,b=Y,j;
@@ -41,14 +45,15 @@ public class FractalPanel extends JPanel{
         {
             for(int y=0;y<h;y++)
             {
-                i=isIn(x / scale - X -w/2/scale, y / scale - Y -h/2/scale);
+                i = isIn(x / scale - X -w/2/scale, y / scale - Y -h/2/scale);
                 
                 //if(i==-1)g.setColor(new Color(0,0,0));
                 //else g.setColor(new Color(255,255,255));
                 
-                if (i == -1)g.setColor(new Color(255,255,255));
+                //if (i == -1)g.setColor(new Color(255,255,255));
 		//else color ? glColor3d((double)(n*itr - i) / (n*itr), 0.5, (double)i / (n*itr)) : glColor3d(1, 1, 1);
-                else g.setColor(new Color((int)(255*(double)i / N), (int)(255*(double)i / N), (int)(255*(double)0.5*i / N)));
+                //else g.setColor(new Color((int)(255*(double)i / N), (int)(255*(double)i / N), (int)(255*(double)0.5*i / N)));
+                g.setColor(fg.getColor(i, N));
                 
                 g.drawRect(x, y, 1, 1);
             }
@@ -63,6 +68,14 @@ public class FractalPanel extends JPanel{
         g.fillRect(w/2-1, h/2, 1, 1);
         g.fillRect(w/2, h/2+1, 1, 1);
         g.fillRect(w/2, h/2-1, 1, 1);
+    }
+    
+    public FGradient getGradient(){
+        return fg;
+    }
+    
+    public void setGradient(FGradient fgr){
+        fg = fgr;
     }
     
     public void moveRight(){
