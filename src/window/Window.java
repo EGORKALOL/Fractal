@@ -1,5 +1,6 @@
 package window;
 
+import gradient.GradientWindow;
 import java.awt.Insets;
 import my_components.FractalPanel;
 import my_components.MyButton;
@@ -151,9 +152,10 @@ public class Window extends JFrame {
 
         MyButton b_show, b_ok, b_scP, b_scM, 
                 b_up, b_down, b_left, b_right, 
-                b_itrP, b_itrM;
+                b_itrP, b_itrM, b_color;
         JTextField t_scale, t_X, t_Y, t_iter;
         JLabel l_loc, l_scale, l_X, l_Y, l_iter;
+        GradientWindow gw;
 
         boolean on;
 
@@ -224,6 +226,9 @@ public class Window extends JFrame {
             
             b_ok = new MyButton("OK");
             b_ok.addActionListener(this);
+            
+            b_color = new MyButton("Gradient");
+            b_color.addActionListener(this);
         }
 
         private void initPositions(int X, int Y) {
@@ -236,12 +241,10 @@ public class Window extends JFrame {
             l_scale.setLocation(0, 25);
             add(l_scale);
 
-            b_scM.setMargin(new Insets(0, 0, 0, 0));
             b_scM.setSize(25, 25);
             b_scM.setLocation(0, 45);
             add(b_scM);            
 
-            b_scP.setMargin(new Insets(0, 0, 0, 0));
             b_scP.setSize(25, 25);
             b_scP.setLocation(X - 25, 45);
             add(b_scP);
@@ -270,7 +273,6 @@ public class Window extends JFrame {
             t_Y.setLocation(20, 115);
             add(t_Y);
 
-            b_left.setMargin(new Insets(0, 0, 0, 0));
             b_left.setSize(30, 30);
             b_left.setLocation(0, 135);
             add(b_left);
@@ -283,7 +285,6 @@ public class Window extends JFrame {
             b_down.setLocation(30, 150);
             add(b_down);
 
-            b_right.setMargin(new Insets(0, 0, 0, 0));
             b_right.setSize(30, 30);
             b_right.setLocation(X - 30, 135);
             add(b_right);
@@ -292,12 +293,10 @@ public class Window extends JFrame {
             l_iter.setLocation(0, 170);
             add(l_iter);
 
-            b_itrM.setMargin(new Insets(0, 0, 0, 0));
             b_itrM.setSize(25, 25);
             b_itrM.setLocation(0, 190);
             add(b_itrM);
 
-            b_itrP.setMargin(new Insets(0, 0, 0, 0));
             b_itrP.setSize(25, 25);
             b_itrP.setLocation(X - 25, 190);
             add(b_itrP);
@@ -305,6 +304,10 @@ public class Window extends JFrame {
             t_iter.setSize(X - 50, 26);
             t_iter.setLocation(25, 190);
             add(t_iter);
+            
+            b_color.setSize(X, 30);
+            b_color.setLocation(0, 230);
+            add(b_color);
 
             b_ok.setSize(X, 30);
             b_ok.setLocation(0, Y - 30);
@@ -422,6 +425,19 @@ public class Window extends JFrame {
             if (e.getSource() == t_iter) {
                 fractal.setItr(Integer.parseInt(t_iter.getText()));
                 //fractal.requestFocus();
+                fractal.repaint();
+            }
+            
+            if (e.getSource() == b_color) {
+                fractal.setFX(Double.parseDouble(t_X.getText()));
+                fractal.setFY(Double.parseDouble(t_Y.getText()));
+                fractal.setScale(Double.parseDouble(t_scale.getText()));
+                fractal.setItr(Integer.parseInt(t_iter.getText()));
+                if(gw == null){
+                    gw = new GradientWindow(fractal);
+                } else {
+                    gw.activate();
+                }
                 fractal.repaint();
             }
 

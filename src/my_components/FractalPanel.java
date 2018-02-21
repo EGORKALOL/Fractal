@@ -53,7 +53,7 @@ public class FractalPanel extends JPanel{
                 //if (i == -1)g.setColor(new Color(255,255,255));
 		//else color ? glColor3d((double)(n*itr - i) / (n*itr), 0.5, (double)i / (n*itr)) : glColor3d(1, 1, 1);
                 //else g.setColor(new Color((int)(255*(double)i / N), (int)(255*(double)i / N), (int)(255*(double)0.5*i / N)));
-                g.setColor(fg.getColor(i, N));
+                g.setColor(fg.getColor(i, N-1));
                 
                 g.drawRect(x, y, 1, 1);
             }
