@@ -1,5 +1,6 @@
 package window;
 
+import java.awt.Insets;
 import my_components.FractalPanel;
 import my_components.MyButton;
 import java.awt.event.ActionEvent;
@@ -235,10 +236,12 @@ public class Window extends JFrame {
             l_scale.setLocation(0, 25);
             add(l_scale);
 
+            b_scM.setMargin(new Insets(0, 0, 0, 0));
             b_scM.setSize(25, 25);
             b_scM.setLocation(0, 45);
             add(b_scM);            
 
+            b_scP.setMargin(new Insets(0, 0, 0, 0));
             b_scP.setSize(25, 25);
             b_scP.setLocation(X - 25, 45);
             add(b_scP);
@@ -267,6 +270,7 @@ public class Window extends JFrame {
             t_Y.setLocation(20, 115);
             add(t_Y);
 
+            b_left.setMargin(new Insets(0, 0, 0, 0));
             b_left.setSize(30, 30);
             b_left.setLocation(0, 135);
             add(b_left);
@@ -279,6 +283,7 @@ public class Window extends JFrame {
             b_down.setLocation(30, 150);
             add(b_down);
 
+            b_right.setMargin(new Insets(0, 0, 0, 0));
             b_right.setSize(30, 30);
             b_right.setLocation(X - 30, 135);
             add(b_right);
@@ -287,10 +292,12 @@ public class Window extends JFrame {
             l_iter.setLocation(0, 170);
             add(l_iter);
 
+            b_itrM.setMargin(new Insets(0, 0, 0, 0));
             b_itrM.setSize(25, 25);
             b_itrM.setLocation(0, 190);
             add(b_itrM);
 
+            b_itrP.setMargin(new Insets(0, 0, 0, 0));
             b_itrP.setSize(25, 25);
             b_itrP.setLocation(X - 25, 190);
             add(b_itrP);
