@@ -28,6 +28,7 @@ public class GradientWindow extends JFrame implements WindowListener{
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setLayout(null);
         setVisible(true);
+        setExtendedState(NORMAL);
         requestFocus();
         
         

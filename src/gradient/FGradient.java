@@ -19,14 +19,14 @@ public class FGradient {
         System.out.println("in: "+ inside.toString()+";\nst: "+start.toString()+
                 ";\nend:"+end.toString());
         */
-        inside = Color.BLACK;
+        inside = Color.WHITE;
         nods = new ArrayList<>();
         nods.add(new Nod(0, Color.BLACK));
-        nods.add(new Nod(f(0.25), Color.RED));
-        nods.add(new Nod(f(0.5), Color.GREEN));
-        nods.add(new Nod(f(0.75), Color.BLUE));
+        //nods.add(new Nod(f(0.25), Color.RED));
+        nods.add(new Nod(f(0.5), Color.RED));
+        //nods.add(new Nod(f(0.75), Color.BLUE));
         //nods.add(new Nod(0.5, Color.RED));
-        nods.add(new Nod(1, Color.WHITE));
+        nods.add(new Nod(1, Color.YELLOW));
     }
     
     public Color getColor(int i, int max) {
