@@ -19,12 +19,14 @@ public class FGradient {
         System.out.println("in: "+ inside.toString()+";\nst: "+start.toString()+
                 ";\nend:"+end.toString());
         */
-        inside = Color.WHITE;
+        inside = Color.BLACK;
         nods = new ArrayList<>();
         nods.add(new Nod(0, Color.BLACK));
-        //nods.add(new Nod((Math.pow(Math.E, 0.5)-1)/(Math.E-1), Color.RED));
-        nods.add(new Nod(0.5, Color.RED));
-        nods.add(new Nod(1, Color.YELLOW));
+        nods.add(new Nod(f(0.25), Color.RED));
+        nods.add(new Nod(f(0.5), Color.GREEN));
+        nods.add(new Nod(f(0.75), Color.BLUE));
+        //nods.add(new Nod(0.5, Color.RED));
+        nods.add(new Nod(1, Color.WHITE));
     }
     
     public Color getColor(int i, int max) {
@@ -33,7 +35,7 @@ public class FGradient {
             return inside;
         else {
             double x = (double)i/max;
-            //x = (Math.pow(Math.E, x)-1)/(Math.E-1);
+            x = f(x);
             for(int n = 0; n < nods.size() - 1; n++){
                 if(x <= nods.get(n+1).getPos())
                     return getNodsColor(n, x);
@@ -42,8 +44,7 @@ public class FGradient {
         return inside;
     }
     
-    Color getNodsColor(int n, double x)
-    {
+    Color getNodsColor(int n, double x){
         //System.out.println(""+x);
         x = (x - nods.get(n).getPos())/
                 (nods.get(n+1).getPos() - nods.get(n).getPos());
@@ -56,6 +57,17 @@ public class FGradient {
                 (int)((1-x)*nods.get(n).getColor().getBlue()
                 + x*nods.get(n+1).getColor().getBlue()));
         
+    }
+    
+    double f(double x) {
+        
+        //return Math.log1p(x*100)/Math.log1p(100);
+        
+        return Math.sqrt(1.0 - Math.pow(x-1, 2));
+        
+        //return Math.pow(x, 1/2);
+        
+        //return (Math.pow(Math.E, x)-1)/(Math.E-1);
     }
     
     class Nod{
